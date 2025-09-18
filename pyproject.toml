@@ -1,0 +1,27 @@
+[project]
+name = "electricitymaps-airflow-scheduler"
+version = "0.1.0"
+description = "Electricity Maps' Airflow provider to schedule operations within an Airflow pipeline"
+authors = [
+    {name = "Pierre Segonne", email = "pierre.segonne@electricitymaps.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "apache-airflow (>=3.0.6,<4.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "electricitymaps_airflow_scheduler", from = "src"}]
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.4.2"
+
+
+[tool.poetry.group.lint.dependencies]
+ruff = "^0.13.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
