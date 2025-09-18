@@ -1,2 +1,2 @@
 # airflow-scheduler
-Electricity Maps' Airflow Provider to execute operations within an airflow pipeline
+Electricity Maps' Airflow provider to schedule operations within an Airflow pipeline
