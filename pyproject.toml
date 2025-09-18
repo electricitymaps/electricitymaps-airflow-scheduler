@@ -22,6 +22,10 @@ pytest = "^8.4.2"
 [tool.poetry.group.lint.dependencies]
 ruff = "^0.13.0"
 
+
+[tool.poetry.group.dev.dependencies]
+graphviz = "^0.21"
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
