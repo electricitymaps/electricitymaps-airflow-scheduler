@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 
-from airflow.models import BaseOperator
+from airflow.models import BaseOperator, BaseOperatorLink
 from airflow.providers.standard.triggers.temporal import DateTimeTrigger
 from airflow.utils.context import Context
 
@@ -8,6 +8,15 @@ from electricitymaps_airflow_scheduler.lib.electricitymaps import (
     DEFAULT_OPTIMIZATION_SIGNAL,
     schedule_execution,
 )
+
+
+class ElectricityMapsSchedulerOperatorExtraLink(BaseOperatorLink):
+    """Extra link for ElectricityMaps Scheduler Operator that points to the ElectricityMaps website."""
+
+    name = "ElectricityMaps"
+
+    def get_link(self, operator: BaseOperator, *, ti_key=None):
+        return "https://www.electricitymaps.com/"
 
 
 class ElectricityMapsSchedulerOperator(BaseOperator):
