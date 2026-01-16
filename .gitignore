@@ -207,3 +207,6 @@ __marimo__/
 
 # Poetry
 poetry.lock
+
+# Claude Code
+CLAUDE.md
