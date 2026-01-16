@@ -21,7 +21,7 @@ dynamic = [
 name = "electricitymaps-airflow-scheduler"
 version = "0.1.0"
 description = "Electricity Maps' Airflow provider to schedule operations within an Airflow pipeline"
-authors = ["Pierre Segonne <pierre.segonne@electricitymaps.com>"]
+authors = ["Pierre Segonne <pierre.segonne@electricitymaps.com>", "Paul Romieu <paul.romieu@electricitymaps.com>"]
 packages = [{include = "electricitymaps_airflow_scheduler", from = "src"}]
 
 [tool.poetry.dependencies]
