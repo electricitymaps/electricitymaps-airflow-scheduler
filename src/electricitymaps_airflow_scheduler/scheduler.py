@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta, timezone
 
 from airflow.models import BaseOperator, BaseOperatorLink
-from airflow.providers.standard.triggers.temporal import DateTimeTrigger
+from airflow.triggers.temporal import DateTimeTrigger
 from airflow.utils.context import Context
 
 from electricitymaps_airflow_scheduler.lib.electricitymaps import (
