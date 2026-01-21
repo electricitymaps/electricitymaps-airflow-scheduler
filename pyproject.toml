@@ -45,15 +45,16 @@ file = "README.md"
 content-type = "text/markdown"
 
 [project.entry-points.apache_airflow_provider]
-provider_info = "src.electricitymaps_airflow_scheduler.__init__:get_provider_info"
+provider_info = "electricitymaps_airflow_scheduler:get_provider_info"
 
 [tool.setuptools]
 include-package-data = false
 
 [tool.setuptools.dynamic]
-version = { attr = "src.electricitymaps_airflow_scheduler.__version__" }
+version = { attr = "electricitymaps_airflow_scheduler.__version__" }
 
 [tool.setuptools.packages.find]
+where = ["src"]
 exclude = ["*tests.*", "*tests", ".ruff_cache", ".pytest_cache"]
 
 [build-system]

@@ -8,7 +8,7 @@ def get_provider_info():
         "description": "Electricity Maps' Airflow provider to schedule operations within an Airflow pipeline",
         "connection-types": [],
         "extra-links": [
-            "src.electricitymaps_airflow_scheduler.scheduler.ElectricityMapsSchedulerOperatorExtraLink"
+            "electricitymaps_airflow_scheduler.scheduler.ElectricityMapsSchedulerOperatorExtraLink"
         ],
         "versions": [__version__],
     }
