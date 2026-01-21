@@ -2,31 +2,27 @@
 name = "electricitymaps-airflow-scheduler"
 description = "Electricity Maps' Airflow provider to schedule operations within an Airflow pipeline"
 authors = [
-    {name = "Pierre Segonne", email = "pierre.segonne@electricitymaps.com"}
+    { name = "Pierre Segonne", email = "pierre.segonne@electricitymaps.com" },
 ]
 license = { text = "Apache License 2.0" }
-requires-python = ">=3.10,<3.14"
-dependencies = [
-    "apache-airflow (>=3.0.6,<4.0.0)"
-]
+requires-python = ">=3.10,<3.13"
+dependencies = ["apache-airflow (>=2.10.0,<4.0.0)"]
 classifiers = [
     "Framework :: Apache Airflow",
     "Framework :: Apache Airflow :: Provider",
 ]
-dynamic = [
-    "version"
-]
+dynamic = ["version"]
 
 [tool.poetry]
 name = "electricitymaps-airflow-scheduler"
 version = "0.1.1"
 description = "Electricity Maps' Airflow provider to schedule operations within an Airflow pipeline"
-authors = ["Pierre Segonne <pierre.segonne@electricitymaps.com>", "Paul Romieu <paul.romieu@electricitymaps.com>"]
-packages = [{include = "electricitymaps_airflow_scheduler", from = "src"}]
-
-[tool.poetry.dependencies]
-python = ">=3.10,<3.14"
-apache-airflow = ">=3.0.6,<4.0.0"
+authors = [
+    "Pierre Segonne <pierre.segonne@electricitymaps.com>",
+    "Paul Romieu <paul.romieu@electricitymaps.com>",
+    "Viktor Andersson <viktor.andersson@electricitymaps.com>" 
+]
+packages = [{ include = "electricitymaps_airflow_scheduler", from = "src" }]
 
 
 [tool.poetry.group.test.dependencies]
@@ -58,12 +54,7 @@ include-package-data = false
 version = { attr = "src.electricitymaps_airflow_scheduler.__version__" }
 
 [tool.setuptools.packages.find]
-exclude = [
-    "*tests.*",
-    "*tests",
-    ".ruff_cache",
-    ".pytest_cache",
-]
+exclude = ["*tests.*", "*tests", ".ruff_cache", ".pytest_cache"]
 
 [build-system]
 requires = ["setuptools>=61.0.0", "wheel"]
