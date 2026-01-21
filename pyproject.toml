@@ -20,6 +20,7 @@ description = "Electricity Maps' Airflow provider to schedule operations within 
 authors = [
     "Pierre Segonne <pierre.segonne@electricitymaps.com>",
     "Paul Romieu <paul.romieu@electricitymaps.com>",
+    "Viktor Andersson <viktor.andersson@electricitymaps.com>" 
 ]
 packages = [{ include = "electricitymaps_airflow_scheduler", from = "src" }]
 
