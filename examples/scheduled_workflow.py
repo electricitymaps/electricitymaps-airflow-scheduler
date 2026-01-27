@@ -1,14 +1,14 @@
 from datetime import datetime, timedelta, timezone
 
-PATIENCE = timedelta(hours=24)
-EXPECTED_DURATION = timedelta(hours=2)
-LOCATION = (50.851748, 4.3286263)  # Brussels (lat, lon)
-
 from airflow.providers.standard.operators.bash import BashOperator
 from airflow.providers.standard.operators.python import PythonOperator
 from airflow.sdk import dag
 
 from electricitymaps_airflow_scheduler.scheduler import ElectricityMapsSchedulerOperator
+
+PATIENCE = timedelta(hours=24)
+EXPECTED_DURATION = timedelta(hours=2)
+LOCATION = (50.851748, 4.3286263)  # Brussels (lat, lon)
 
 
 @dag(
