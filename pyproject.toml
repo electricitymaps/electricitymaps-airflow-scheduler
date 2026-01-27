@@ -35,6 +35,7 @@ ruff = "^0.13.0"
 
 [tool.poetry.group.dev.dependencies]
 graphviz = "^0.21"
+pre-commit = "^4.0.0"
 
 [project.urls]
 Homepage = "https://www.electricitymaps.com/"
