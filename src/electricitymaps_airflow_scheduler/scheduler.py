@@ -54,12 +54,22 @@ class ElectricityMapsSchedulerOperator(BaseOperator):
             locations=[self.location],
         )
 
+        optimization = optimal_execution.optimization_output
+        self.log.info(
+            f"Electricity Maps API response: optimal start time {optimal_execution.optimal_start_time}, "
+            f"zone {optimization.zone_key}, "
+            f"immediate execution: {optimization.metric_value_immediate_execution:.1f} {optimization.metric_unit}, "
+            f"optimal execution: {optimization.metric_value_optimal_execution:.1f} {optimization.metric_unit}"
+        )
+
         now = datetime.now(timezone.utc)
         if optimal_execution.optimal_start_time < now:
-            self.log.info("proceeding with execution")
+            self.log.info(
+                "Optimal time already passed, proceeding with execution immediately"
+            )
             return None
 
-        self.log.info(f"deferring to {optimal_execution.optimal_start_time}")
+        self.log.info(f"Deferring execution to {optimal_execution.optimal_start_time}")
         self.defer(
             trigger=DateTimeTrigger(
                 moment=optimal_execution.optimal_start_time, end_from_trigger=True
