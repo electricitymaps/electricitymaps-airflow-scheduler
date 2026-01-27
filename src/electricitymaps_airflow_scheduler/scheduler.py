@@ -1,3 +1,4 @@
+import math
 from datetime import datetime, timedelta, timezone
 
 from airflow.models import BaseOperator, BaseOperatorLink
@@ -45,7 +46,9 @@ class ElectricityMapsSchedulerOperator(BaseOperator):
             """
         )
         optimal_execution = schedule_execution(
-            expected_duration_hours=int(self.expected_duration.total_seconds() / 3600),
+            expected_duration_hours=math.ceil(
+                self.expected_duration.total_seconds() / 3600
+            ),
             end_datetime=end_datetime,
             optimization_signal=DEFAULT_OPTIMIZATION_SIGNAL,
             locations=[self.location],
