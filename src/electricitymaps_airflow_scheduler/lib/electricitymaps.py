@@ -72,7 +72,7 @@ def schedule_execution(
     if not locations:
         raise ValueError("No locations provided")
 
-    ceiled_expected_duration_hours = math.ceil(expected_duration_hours)
+    ceiled_expected_duration_hours = max(1, math.ceil(expected_duration_hours))
     body = {
         "duration": f"PT{ceiled_expected_duration_hours}H",
         "startWindow": (

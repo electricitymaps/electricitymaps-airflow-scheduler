@@ -1,3 +1,4 @@
+import math
 from datetime import datetime, timedelta, timezone
 
 from airflow.models import BaseOperator, BaseOperatorLink
@@ -45,18 +46,30 @@ class ElectricityMapsSchedulerOperator(BaseOperator):
             """
         )
         optimal_execution = schedule_execution(
-            expected_duration_hours=int(self.expected_duration.total_seconds() / 3600),
+            expected_duration_hours=math.ceil(
+                self.expected_duration.total_seconds() / 3600
+            ),
             end_datetime=end_datetime,
             optimization_signal=DEFAULT_OPTIMIZATION_SIGNAL,
             locations=[self.location],
         )
 
+        optimization = optimal_execution.optimization_output
+        self.log.info(
+            f"Electricity Maps API response: optimal start time {optimal_execution.optimal_start_time}, "
+            f"zone {optimization.zone_key}, "
+            f"immediate execution: {optimization.metric_value_immediate_execution:.1f} {optimization.metric_unit}, "
+            f"optimal execution: {optimization.metric_value_optimal_execution:.1f} {optimization.metric_unit}"
+        )
+
         now = datetime.now(timezone.utc)
         if optimal_execution.optimal_start_time < now:
-            self.log.info("proceeding with execution")
+            self.log.info(
+                "Optimal time already passed, proceeding with execution immediately"
+            )
             return None
 
-        self.log.info(f"deferring to {optimal_execution.optimal_start_time}")
+        self.log.info(f"Deferring execution to {optimal_execution.optimal_start_time}")
         self.defer(
             trigger=DateTimeTrigger(
                 moment=optimal_execution.optimal_start_time, end_from_trigger=True
