@@ -2,6 +2,11 @@
 
 An Apache Airflow provider that schedules pipeline operations to run when carbon intensity is lowest. The operator defers task execution until the optimal time within a configurable patience window, using the [Electricity Maps](https://www.electricitymaps.com/) carbon-aware optimizer API.
 
+> [!IMPORTANT]
+> This project has been archived for now as we are prioritising efforts elsewhere.
+> 
+> [Get in touch](https://www.electricitymaps.com/get-started) with us if you are interested in a commercial setup using the scheduler.
+
 ## Installation
 
 ```bash
